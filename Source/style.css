@@ -1,0 +1,418 @@
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+:root {
+  --map-width: calc((100vw - 7.5vh) * 0.83);
+  --map-height: calc((((100vw - 7.5vh) * 0.83)/2560)*1239);
+  --calculate-width: calc((100vw - 7.5vh) * 0.17);
+
+}
+
+
+
+/*@font-face {
+    font-family: "Noto Sans TC";
+    src: url("Noto_Sans_TC/NotoSansTC-Light.otf") format("truetype");
+}*/
+html{
+    background-color: /*#fff*/#FAFAFA;
+
+    color: /*#333*/ #222222;
+    font-family: "黑體-繁","微軟正黑體",sans-serif !important;
+}
+body{
+    margin: 0;
+    /* overflow-y: overlay; */
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+body::-webkit-scrollbar{
+    width: 16px;
+}
+body::-webkit-scrollbar-thumb{
+    width: 16px;
+    border-radius: 8px;
+    border: 4px solid transparent;
+    background-clip: content-box;
+    background-color: hsl(0,0%,67%);
+
+    transition: 0.5s;
+}
+body::-webkit-scrollbar-thumb:hover{
+    background-color: rgb(140, 140, 140);
+}
+
+/*logo*/
+#left-container{
+    /*position: fixed;*/
+    height: 5vh;
+    /*top: 2.5vh;*/
+    left: 2.5vh;
+    margin: 2.5vh;
+    width: var(--map-width);
+}
+#SLRLogo{
+    height: 5vh;
+    left: 2.5vh;
+    padding-right: 20px;
+}
+#hcLogo{
+    height: 6vh;
+    left: 2.5vh;
+}
+#by{
+    position: fixed;
+    height: 5vh;
+    top: 2.5vh;
+    right: calc((100% - (87.5vh * 2.066)) / 2);
+    
+    align-items: center;
+}
+
+/*header*/
+header{
+    width: 100%;
+    height: 10vh;
+    
+    /*justify-content: center;*/
+    align-items: center;
+}
+.header-in{
+    /*display: flex;
+    justify-content: center;
+    align-items: center;*/
+    /*margin: 2.5vh 0 2.5vh calc(100vw - (5vh / 813 * 3261) - 2.5vh - (15vh + 1.5vw) - 2.5vh);*/
+
+    /*margin: 2.5vh 0 2.5vh calc(100vw - (5vh / 813 * 3261) - 2.5vh - (var(--calculate-width)) - 2.5vh);*/
+}
+.group-btn{
+    /*padding: 10px 15px;*/
+    margin: 0 0 0 0.5vw;
+    width: calc(5vh - 2px);
+    height: calc(5vh - 2px);
+
+    /*width: 100px;
+    height: 40px;*/
+    border: 0px;/*1px solid;
+    /*border-color: #DDDDDD;*/
+    border-radius: 10px;
+
+    background-color: #e0e0e0/*#FAFAFA/*#222222*/;
+
+
+    color: #222222;
+    font-size: /*20px*/1rem;
+    font-family: 'Noto Sans TC',"黑體-繁","微軟正黑體",sans-serif !important;
+
+    cursor: pointer; 
+
+    transition: 0.5s;
+    transition-timing-function: ease;
+    z-index: 5;
+}
+.group-btn:hover{
+    background-color: #c8c8c8;
+    /*color: #222222;*/
+    /*transform: scale(1.1);*/
+    /*border-color: #222222;*/
+}
+.group-btn:active{
+    /*transform: scale(0.95);*/
+}
+
+#mapSelect{
+    height: calc(5vh - 2px);
+    width: var(--calculate-width);
+    border: 1px #ccc solid;
+    border-radius: 10px;
+    background-color: #FAFAFA;
+    color: #222222;
+    cursor: pointer;
+
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+#mapSelect:hover{
+    border: 1px #007bff solid;
+    box-shadow: 0 0 5px rgba(0,123,255,0.3);
+}
+#mapSelect:focus{
+    border: 1px #007bff solid;
+    box-shadow: 0 0 5px rgba(0,123,255,0.3);
+}
+#downloadBtn-container{
+    width: calc(var(--map-width) - (5vh / 813 *3261));
+}
+#installBtn{
+    height: calc(5vh - 0px);
+    padding: 0 1vh 0 1vh;
+    margin: 0 0 0 2.5vh;
+    display: inline-flex;             /* 讓內部元素成 flex row */
+    align-items: center;       /* 垂直置中 */
+    justify-content: center;   /* 水平置中，可選 */
+
+    border-radius: 10px;
+    border: #ccc 1px solid;
+    cursor: pointer;
+    background-color: #FAFAFA;
+    transition: 0.3s;
+}
+#installBtn:hover{
+    border: #007bff 1px solid;
+    box-shadow: 0 0 5px rgba(0,123,255,0.3);
+}
+#installBtn:focus{
+    border: #007bff 1px solid;
+    box-shadow: 0 0 5px rgba(0,123,255,0.3);
+}
+
+#installIcon{
+    height: 3vh;
+    margin-right: 1vh;
+}
+#installText{
+    /*height: 5vh;*/
+    /*width: 500px;*/
+    align-items: center;   /* 垂直置中 */
+    text-align: center;
+    justify-content: center;
+}
+
+/*center*/
+#center{
+    width: calc(100vw - 5vh);
+    padding: 0 2.5vh 0 2.5vh;
+    height: 90vh;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 2.5vh;
+}
+
+#left-column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 2.5vh;
+    min-height: 0;
+}
+
+#map-container {
+    flex: 0 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 0;
+}
+
+#bottom-bar {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+#center-bar{
+    width: var(--calculate-width);
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+#center-in{
+    /*width: calc((87.5vh / 1239 * 2560) + 5vh );
+    height: 100%;*/
+    
+
+    /*display: flex;
+    justify-content: center;
+    align-items: center;*/
+
+    /*margin-top: 2.5vh;*/
+
+    /*height: 81vh;*/
+    width: calc(81vh / 1239 * 2560);
+}
+
+canvas{
+    /*width: calc(81vh / 1239 * 2560);
+    height: 81vh;*/
+    
+    width: var(--map-width);
+    height: var(--map-height);
+
+    z-index: 4;
+    border-radius: 10px; /* 設置圓角 */
+}
+.map{
+    /*height: 87.5vh;*/
+    
+    /*width: calc(87.5vh / 1239 * 2560);*/
+    width: var(--map-width);
+    height: var(--map-height);
+    
+
+    position: absolute;
+    /*top: calc(50% + 3.75vh);*/
+    /*left: 50%;*/
+    /*left: calc(50% + (100vw - 5vh - (87.5vh / 1239 * 2560))/2);*/
+    top: 10vh;
+    left: 2.5vh;
+    /*transform: translate(-50%, -50%);*/
+
+    z-index: auto;
+
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/*#result{
+    height: 100px;
+    width: 175px;
+    background-color: #FAFAFA;
+
+    position: absolute;
+
+    top: calc(50vh - 43.75vh + 50px);
+    left: calc(50vw - (87.5vh * 2.066 * 0.5) + 87.5px + 10px);
+    transform: translate(-50%, -50%);
+
+    z-index: 4;
+}*/
+#lineX{
+    width: var(--map-width)/*calc(81vh * 2.066)*/;
+    height: 2px;
+    background: #7e7e7e;
+    position: absolute;
+    z-index: 3;
+    left: 2.5vh;
+
+    display: none;
+
+    border-radius: 1px;
+}
+
+#lineY{
+    width: 2px;
+    height: var(--map-height);
+    background: #7e7e7e;
+    position: absolute;
+    z-index: 3;
+    top: 10vh;
+
+    display: none;
+
+    border-radius: 1px;
+}
+
+#robot{
+    width: calc(var(--map-height) * 0.219178);
+    height: calc(var(--map-height) * 0.219178);
+    /*border: 3px rgb(0, 0, 0);*/
+    position: absolute;
+    /*background: #000000;*/
+    /*opacity: 0.5;*/
+    background-color: rgba(0, 0, 0, 0.5);
+    
+    z-index: 2;
+
+    /*display: none;*/
+
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+#robot-part-description{
+    height: auto;
+}
+#wheel-setting {
+    display: flex;
+    flex-direction: column; /* 垂直排列標籤與輸入框 */
+    justify-content: flex-start;
+    align-items: stretch; /* 子元素寬度填滿容器 */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 2.5vh 0 0 0;
+    width: calc(100% - 30px);
+    background-color: #FFFFFF;
+    padding: 15px; /* 與計算機內邊距統一 */
+    gap: 10px; /* 元素間距 */
+    
+    height: auto; /* 高度自動 */
+    min-height: 0; /* 避免被 flex 父元素強制撐高 */
+}
+
+
+#wheel-setting label {
+    font-size: 1em;
+    color: #333;
+}
+
+#wheel-setting input {
+    width: 100%; /* 填滿容器寬度 */
+    height: 40px; /* 與計算機按鈕高度接近 */
+    font-size: 1em;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+#wheel-setting input:focus {
+    border: 1px solid #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.3);
+}
+
+#robot-circle{
+    width: calc(var(--map-height) * 0.219178);
+    height: calc(var(--map-height) * 0.219178);
+    background: rgba(255,0,0,0.5) ;
+    border-radius: 50%;
+    display: none;
+}
+
+.polygon-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-size: 0.9em;
+}
+
+.polygon-table thead {
+    background: #4CAF50;
+    color: white;
+}
+
+.polygon-table th {
+    padding: 8px;
+    text-align: center;
+    font-weight: 600;
+    border: 1px solid #ddd;
+}
+
+.polygon-table td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.polygon-table tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.polygon-table tbody tr:hover {
+    background: #f0f0f0;
+}

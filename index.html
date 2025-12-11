@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SLR Distance Map</title>
+
+    <meta name="description"
+        content="Struggling with distance measurements in WRO competition? Try SLR Distance Map!">
+    <meta name="keywords" content="WRO,SLR,SLR Robotics,SLR Distance Map,Distance Map,小洛特樂高機器人,樂高補習班,高雄樂高補習班,左營樂高補習班,凹子底樂高補習班,幼兒啟蒙教育,steam教育,創意積木課程,樂高課程">
+    
+    <meta property="og:title" content="SLR Distance Map" />
+    <meta property="og:type" content='website' />
+    <meta property="og:url" content="legorobot.com.tw/SLR-Distance-Map/" />
+    <meta property="og:description"
+        content="Struggling with distance measurements in WRO competition? Try SLR Distance Map!" />
+    <meta property="og:site_name" content="小洛特樂高機器人" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+    <link rel="icon" href="Source/img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" media="screen" href="Source/style.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="Source/calculateStyle.css"/>
+
+    <link rel="manifest" href="manifest.json">
+
+</head>
+<body oncontextmenu="return false">
+    
+    <!--<div id="by" class="flex-row">
+        <div id="by-text">SLR Development Team</div>
+    </div>-->
+    
+    <header class="flex-row" id="header">
+        <div id="left-container" class="flex-row">
+            <img src="Source/img/LOGO.png" alt="SLR Robotics" id="SLRLogo">
+            <img src="Source/img/hcLOGO.png" alt="Hwa Chong Robotics" id="hcLogo">
+            <div id="downloadBtn-container">
+                <button id="installBtn" style="display: none;">
+                    <img src="Source/img/download_222222.png" alt="download" id="installIcon">
+                    <span id="installText">
+                        Install as APP
+                    </span>
+                </button>
+            </div>
+            
+        </div>
+        
+        <div class="header-in" id="btn-container">
+            <!--<button class="group-btn" id="btn-elementary">E</button>
+            <button class="group-btn" id="btn-junior">J</button>
+            <button class="group-btn" id="btn-senior">S</button>-->
+
+            
+
+            <select name="MapSelect" id="mapSelect">
+                <optgroup label="WRO2025">
+                    <option value="WRO2025_ElementaryMap">WRO2025 Elementary</option>
+                    <option value="WRO2025_JuniorMap">WRO2025 Junior</option>
+                    <option value="WRO2025_SeniorMap">WRO2025 Senior</option>
+                </optgroup>
+                <optgroup label="WRO2024">
+                    <option value="WRO2024_ElementaryMap">WRO2024 Elementary</option>
+                    <option value="WRO2024_JuniorMap">WRO2024 Junior</option>
+                    <option value="WRO2024_SeniorMap">WRO2024 Senior</option>
+                </optgroup>
+                <optgroup label="WRO2023">
+                    <option value="WRO2023_ElementaryMap">WRO2023 Elementary</option>
+                    <option value="WRO2023_JuniorMap">WRO2023 Junior</option>
+                    <option value="WRO2023_SeniorMap">WRO2023 Senior</option>
+                </optgroup>
+                <optgroup label="WRO2022">
+                    <option value="WRO2022_ElementaryMap">WRO2022 Elementary</option>
+                    <option value="WRO2022_JuniorMap">WRO2022 Junior</option>
+                    <option value="WRO2022_SeniorMap">WRO2022 Senior</option>
+                </optgroup>
+                <optgroup label="WRO2021">
+                    <option value="WRO2021_ElementaryMap">WRO2021 Elementary</option>
+                    <option value="WRO2021_JuniorMap">WRO2021 Junior</option>
+                    <option value="WRO2021_SeniorMap">WRO2021 Senior</option>
+                </optgroup>
+            </select>
+        </div>
+    </header>
+
+    <div id="center" class="flex-row">
+        <div id="left-column">
+            <div id="map-container">
+                <canvas id="canvas"></canvas>
+                <!--<div id="center-in">-->
+                    <img src="Source/img/WRO2025_ElementaryMap.png" alt="Elementary" class="map" id="WRO2025_ElementaryMap">
+                    <img src="Source/img/WRO2025_JuniorMap.png" alt="Junior" class="map" id="WRO2025_JuniorMap">
+                    <img src="Source/img/WRO2025_SeniorMap.png" alt="Senior" class="map" id="WRO2025_SeniorMap">
+
+                    <img src="Source/img/WRO2024_ElementaryMap.png" alt="Elementary" class="map" id="WRO2024_ElementaryMap">
+                    <img src="Source/img/WRO2024_JuniorMap.png" alt="Junior" class="map" id="WRO2024_JuniorMap">
+                    <img src="Source/img/WRO2024_SeniorMap.png" alt="Senior" class="map" id="WRO2024_SeniorMap">
+
+                    <img src="Source/img/WRO2023_ElementaryMap.png" alt="Elementary" class="map" id="WRO2023_ElementaryMap">
+                    <img src="Source/img/WRO2023_JuniorMap.png" alt="Junior" class="map" id="WRO2023_JuniorMap">
+                    <img src="Source/img/WRO2023_SeniorMap.png" alt="Senior" class="map" id="WRO2023_SeniorMap">
+
+                    <img src="Source/img/WRO2022_ElementaryMap.png" alt="Elementary" class="map" id="WRO2022_ElementaryMap">
+                    <img src="Source/img/WRO2022_JuniorMap.png" alt="Junior" class="map" id="WRO2022_JuniorMap">
+                    <img src="Source/img/WRO2022_SeniorMap.png" alt="Senior" class="map" id="WRO2022_SeniorMap">
+
+                    <img src="Source/img/WRO2021_ElementaryMap.png" alt="Elementary" class="map" id="WRO2021_ElementaryMap">
+                    <img src="Source/img/WRO2021_JuniorMap.png" alt="Junior" class="map" id="WRO2021_JuniorMap">
+                    <img src="Source/img/WRO2021_SeniorMap.png" alt="Senior" class="map" id="WRO2021_SeniorMap">
+            </div>
+
+            <div id="bottom-bar">
+                <table id="measurementTable" class="polygon-table">
+                    <thead>
+                        <tr>
+                            <th>Distance (mm)</th>
+                            <th>Motor Degree (°)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="center-bar">
+            <div id="calculator">
+                <input type="text" id="display">
+                <div class="calc-buttons">
+                    <button class="double" onclick="clearDisplay()">C</button>
+                    <button onclick="deleteLast()">⭠</button>
+                    <button onclick="appendCharacter('/')">÷</button>
+                    <button onclick="appendCharacter('7')">7</button>
+                    <button onclick="appendCharacter('8')">8</button>
+                    <button onclick="appendCharacter('9')">9</button>
+                    <button onclick="appendCharacter('*')">×</button>
+                    <button onclick="appendCharacter('4')">4</button>
+                    <button onclick="appendCharacter('5')">5</button>
+                    <button onclick="appendCharacter('6')">6</button>
+                    <button onclick="appendCharacter('-')">-</button>
+                    <button onclick="appendCharacter('1')">1</button>
+                    <button onclick="appendCharacter('2')">2</button>
+                    <button onclick="appendCharacter('3')">3</button>
+                    <button onclick="appendCharacter('+')">+</button>
+                    <button class="double" onclick="appendCharacter('0')" class="zero">0</button>
+                    <button onclick="appendCharacter('.')">.</button>
+                    <button class="equal" onclick="calculateResult()">=</button>
+                    
+                </div>
+                <!--<div class="wheel-input">
+                    <label for="Wheel-Diameter">Wheel Diameter (mm)</label>
+                    <input type="text" id="Wheel-Diameter" value="62.4">
+                </div>-->
+
+                
+            </div>
+
+            <div id="wheel-setting">
+                <label for="Wheel-Diameter">Wheels Diameter (mm)</label>
+                <input type="text" id="Wheel-Diameter" value="62.4">
+                <!--<label for="Wheel-Track">Wheels Track (mm)</label>
+                <input type="text" id="Wheel-Track" value="200">-->
+            </div>
+
+            <div id="snap-setting" class="checkbox">
+                <label for="snapToggle">Snap to 90°</label>
+                <input type="checkbox" id="snapToggle">
+            </div>
+
+            <div id="displaySettings" class="checkbox">
+                <label for="">Display</label>
+                <table>
+                    <tr>
+                        <th>
+                            <label for="mmToggle">mm</label>
+                        </th>
+                        <th>
+                            <label for="wheelAngleToggle">°</label>
+                        </th>
+                        <th>
+                            <label for="angleToggle">∠</label>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input type="checkbox" id="mmToggle" checked>
+                        </th>
+                        <th>
+                            <input type="checkbox" id="wheelAngleToggle" checked>
+                        </th>
+                        <th>
+                            <input type="checkbox" id="angleToggle" checked>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- <div id="mm-setting" class="checkbox">
+                <label for="mmToggle">Toggle mm display</label>
+                <input type="checkbox" id="mmToggle" checked>
+            </div>
+
+            <div id="wheel-angle-setting" class="checkbox">
+                <label for="wheelAngleToggle">Toggle wheel angle display</label>
+                <input type="checkbox" id="wheelAngleToggle" checked>
+            </div>
+
+            <div id="angle-setting" class="checkbox">
+                <label for="angleToggle">Toggle wheel angle display</label>
+                <input type="checkbox" id="angleToggle" checked>
+            </div> -->
+
+            <button id="clearPolygonBtn" class="clear-btn">Clear</button>
+
+            <div id="save-load-buttons">
+                <button id="saveBtn" class="save-btn">Save</button>
+                <button id="uploadBtn" class="upload-btn">Load</button>
+                <input type="file" id="fileInput" accept=".json" style="display: none;">
+            </div>
+            
+        </div>
+    </div>
+
+    <div id="lineX"></div>
+    <div id="lineY"></div>
+    <div id="robot">
+        <div id="robot-circle"></div>
+    </div>
+    
+
+    <script type="text/javascript" src="Source/main.js"></script>
+    <script type="text/javascript" src="Source/calculateMain.js"></script>
+
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker
+                .register("/SLR-Distance-Map/service-worker.js", { scope: "/SLR-Distance-Map/" })
+                .then(reg => {
+                    // console.log("✅ SW 註冊成功:", reg);
+                })
+                .catch(err => {
+                    // console.error("❌ SW 註冊失敗:", err);
+                });
+            });
+        }
+
+
+        // 下載安裝 PWA
+        let deferredPrompt;
+        const installBtn = document.getElementById('installBtn');
+
+        // 初始隱藏按鈕
+        installBtn.style.display = 'none';
+
+        // 判斷是否已安裝 PWA
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches 
+                            || window.navigator.standalone === true;
+
+        if (!isStandalone) {
+            // 只有未安裝才監聽 beforeinstallprompt
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault(); // 阻止瀏覽器自動跳出提示
+                deferredPrompt = e; // 存下事件物件
+                installBtn.style.display = 'flex'; // 顯示按鈕
+            });
+        }
+
+        // 點擊安裝按鈕
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt(); // 呼叫安裝對話框
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`使用者選擇: ${outcome}`);
+                deferredPrompt = null;
+                installBtn.style.display = 'none'; // 安裝後隱藏按鈕
+            }
+        });
+    </script>
+
+</body>
+</html>
